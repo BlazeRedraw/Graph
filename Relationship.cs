@@ -16,7 +16,7 @@
 
         }
 
-        public int Relationships(int i, int j)
+        public int Relationships(int i, int j, Node node)
         {
             int z = 0;
             tagValue = 0;
@@ -44,7 +44,7 @@
             return edge.EdgeValue(tagValue);
         }
 
-        public Node Reccomended()
+        public Node Recomended(Node node)
         {
             bool watched = false;
             int z = 0;
