@@ -10,7 +10,7 @@
 
         }
 
-        public string GetGraph()
+        public string GetGraph(Node node)
         {
             string text = "Movies  ";
 
@@ -33,7 +33,7 @@
                     }
                     else
                     {
-                        //text += relationship.Relationships(i, j);
+                        text += relationship.Relationships(i, j, node);
                     }
 
                     if (j < node.movies.Count - 1)
