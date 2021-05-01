@@ -16,8 +16,10 @@ namespace Graph
 
         }
 
-        public string GetList(string list)
+        public string Search(string list)
         {
+            list = list.Trim();
+
             if (list == "Cast")
             {
                 text = string.Join(", ", cast);
@@ -29,20 +31,52 @@ namespace Graph
                     return text;
                 }
             }
+            else if (list == "Company")
+            {
+                text = string.Join(", ", companies);
 
-            return list + " doesn't exist.\n";
+                if (text != "")
+                {
+                    text = text.TrimEnd(' ');
+                    text = text.TrimEnd(',') + ".\n";
+                    return text;
+                }
+            }
+            else if (list == "Genre")
+            {
+                text = string.Join(", ", genres);
+
+                if (text != "")
+                {
+                    text = text.TrimEnd(' ');
+                    text = text.TrimEnd(',') + ".\n";
+                    return text;
+                }
+            }
+            else if (list == "Rating")
+            {
+                text = string.Join(", ", ratings);
+
+                if (text != "")
+                {
+                    text = text.TrimEnd(' ');
+                    text = text.TrimEnd(',') + ".\n";
+                    return text;
+                }
+            }
+
+            return list + " is empty.\n";
         }
 
         public string Add(string list, string tag)
         {
+            list = list.Trim();
+            tag = tag.Trim();
+            completed = false;
 
             if (list == "Cast")
             {
-                if (cast.Contains(tag))
-                {
-                    completed = false;
-                }
-                else
+                if (!cast.Contains(tag))
                 {
                     cast.Add(tag);
                     completed = true;
@@ -50,11 +84,7 @@ namespace Graph
             }
             else if (list == "Company")
             {
-                if (companies.Contains(tag))
-                {
-                    completed = false;
-                }
-                else
+                if (!companies.Contains(tag))
                 {
                     companies.Add(tag);
                     completed = true;
@@ -62,11 +92,7 @@ namespace Graph
             }
             else if (list == "Genre")
             {
-                if (genres.Contains(tag))
-                {
-                    completed = false;
-                }
-                else
+                if (!genres.Contains(tag))
                 {
                     genres.Add(tag);
                     completed = true;
@@ -74,11 +100,7 @@ namespace Graph
             }
             else if (list == "Rating")
             {
-                if (ratings.Contains(tag))
-                {
-                    completed = false;
-                }
-                else
+                if (!ratings.Contains(tag))
                 {
                     ratings.Add(tag);
                     completed = true;
@@ -100,16 +122,16 @@ namespace Graph
         }
         public string Remove(string list, string tag)
         {
+            list = list.Trim();
+            tag = tag.Trim();
+            completed = false;
+
             if (list == "Cast")
             {
                 if (cast.Contains(tag))
                 {
                     cast.Remove(tag);
                     completed = true;
-                }
-                else
-                {
-                    completed = false;
                 }
             }
             else if (list == "Company")
@@ -119,10 +141,6 @@ namespace Graph
                     companies.Remove(tag);
                     completed = true;
                 }
-                else
-                {
-                    completed = false;
-                }
             }
             else if (list == "Genre")
             {
@@ -131,10 +149,6 @@ namespace Graph
                     genres.Remove(tag);
                     completed = true;
                 }
-                else
-                {
-                    completed = false;
-                }
             }
             else if (list == "Rating")
             {
@@ -142,10 +156,6 @@ namespace Graph
                 {
                     ratings.Remove(tag);
                     completed = true;
-                }
-                else
-                {
-                    completed = false;
                 }
             }
             else
