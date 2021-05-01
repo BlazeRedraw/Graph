@@ -45,7 +45,12 @@ namespace Graph
             tags[5] = "T.J. Miller";
 
             Console.WriteLine(node.Add(name, tags, null));
-            Console.WriteLine(graph.GetGraph());
+
+            Console.WriteLine(graph.GetGraph(node));
+
+            Console.WriteLine(node.Watch("    How to Train Your Dragon    ", null));
+
+            Console.WriteLine("Your tags are " + string.Join(", ", tagList));
         }
 
         public void Watched(string tag)
